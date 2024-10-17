@@ -96,27 +96,29 @@ export default function Results() {
   )
 
   return (
-    <div>
-      <h1 className='mt-20'>Live Voting Data</h1>
-      <div className='flex justify-evenly align-center w-full bg-blue-400 p-5 text-left text-sm mt-5 rounded-xl'>
-        <h2>Presidential live data</h2>
-        <ul className='text-xl'>
-          <li>{elem}</li>
-        </ul>
-      </div>
+    <div className='flex justify-center items-center flex-col'>
+      <h1 className='mt-24'>Live Voting Data</h1>
+      <div>
+        <div className='flex justify-evenly align-center flex-col w-fit bg-blue-400 p-5 text-left text-sm mt-5 rounded-xl'>
+          <h2 className='font-bold'>Presidential live data</h2>
+          <ul className='md:text-xl'>
+            <li>{elem}</li>
+          </ul>
+        </div>
 
-      <div className='flex justify-evenly align-center w-full bg-blue-400 p-5 text-left text-sm mt-5 rounded-xl'>
-        <h2>Governorship live data</h2>
-        <ul className='text-xl'>
-          <li>{elem1}</li>
-        </ul>
-      </div>
+        <div className='flex justify-evenly align-center flex-col w-fit bg-blue-400 p-5 text-left text-sm mt-5 rounded-xl'>
+          <h2 className='font-bold'>Governorship live data</h2>
+          <ul className='md:text-xl'>
+            <li>{elem1}</li>
+          </ul>
+        </div>
 
-      <div className='flex justify-evenly align-center w-full bg-blue-400 p-5 text-left text-sm mt-5 rounded-xl'>
-        <h2>House Of Reps live data</h2>
-        <ul className='text-xl'>
-          <li>{elem2}</li>
-        </ul>
+        <div className='flex justify-evenly align-center flex-col w-fit bg-blue-400 p-5 text-left text-sm mt-5 rounded-xl'>
+          <h2 className='font-bold'>House Of Reps live data</h2>
+          <ul className='md:text-xl'>
+            <li>{elem2}</li>
+          </ul>
+        </div>
       </div>
     </div>
   )

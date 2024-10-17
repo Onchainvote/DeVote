@@ -4,10 +4,22 @@ import devote from '../assets/devotelogo.png';
 import { useEffect, useState } from "react";
 import classNames from "classnames";
 import { useAccount } from 'wagmi'
+import { IoMenuOutline } from "react-icons/io5";
+import { RiPassValidLine } from "react-icons/ri";
+import { MdTravelExplore } from "react-icons/md";
+import { BsClipboardData } from "react-icons/bs";
+import { CgProfile } from "react-icons/cg";
+import { RiTeamLine } from "react-icons/ri";
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
   const { address } = useAccount();
+
+  //function to toggle menu
+  const toggleMenu = () => {
+    setIsOpen(!isOpen)
+  }
 
   //Detect scrolling for background change
   useEffect(() => {
@@ -31,33 +43,56 @@ function Navbar() {
   return (
     <>
       <nav className={headerClass}>
-        <ul className=" flex justify-between items-center">
-          <li>
-            <img className='w-20' src={devote} alt="devotelogo" />
-          </li>
-          <li>
-            <Link to="/">Accreditation</Link>
-          </li>
-          <li>
-            <Link to="/explore">Explore</Link>
-          </li>
-          <li>
-            <Link to="/results">Live data</Link>
-          </li>
-          {
-            address != null ? (
-              <li>
-                <Link to="/dashboard">Dashboard</Link>
-              </li>
-            ) : null
-          }
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <WalletComponents />
-          </li>
-        </ul>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between h-18">
+            <div className="flex-shrink-0 flex items-center">
+              <Link to="/">
+                <img className='w-20' src={devote} alt="devotelogo" />
+              </Link>
+            </div>
+            <div className="flex items-center sm:hidden">
+              <button onClick={toggleMenu}>
+                <IoMenuOutline />
+              </button>
+            </div>
+
+            <div className="hidden sm:flex sm:gap-5 sm:items-center">
+              <Link to="/"><RiPassValidLine /> Accreditation</Link>
+              <Link to="/explore"><MdTravelExplore /> Explore</Link>
+              <Link to="/results"><BsClipboardData /> Live data</Link>
+              {
+                address != null ? (
+                  <li>
+                    <Link to="/dashboard"><CgProfile /> Dashboard</Link>
+                  </li>
+                ) : null
+              }
+              <Link to="/about"><RiTeamLine /> About</Link>
+            </div>
+            <div className="flex-shrink-0 flex items-center">
+              <WalletComponents />
+            </div>
+          </div>
+        </div>
+
+        {
+          isOpen && (
+            <div className="sm:hidden flex justify-center gap-2 items-center">
+              <Link to="/"><RiPassValidLine /> Accreditation</Link>
+              <Link to="/explore"><MdTravelExplore /> Explore</Link>
+              <Link to="/results"><BsClipboardData /> Live data</Link>
+              {
+                address != null ? (
+                  <li>
+                    <Link to="/dashboard"><CgProfile /> Dashboard</Link>
+                  </li>
+                ) : null
+              }
+              <Link to="/about"><RiTeamLine /> About</Link>
+            </div>
+          )
+        }
       </nav>
 
       <Outlet />

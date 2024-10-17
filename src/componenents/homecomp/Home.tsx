@@ -8,9 +8,9 @@ import Footer from "../../Layout/Footer";
 import { presidential } from "../../data";
 import VoteCandi from "../votecomp/VoteCandi";
 
-interface MyObject {
-  [key: string]: string;
-}
+// interface MyObject {
+//   [key: string]: string;
+// }
 
 function Home() {
   // let id_address = new Map<string, string>();
@@ -18,9 +18,9 @@ function Home() {
   const account = useAccount();
   const navigate = useNavigate();
   const [usrInp, setUsrInp] = useState<string>("");
-  const [id_address, setId_Address] = useState<MyObject>({
-    "1234567890": "0x23456789",
-  });
+  // const [id_address, setId_Address] = useState<MyObject>({
+  //   "1234567890": "0x23456789",
+  // });
 
   const handleUsrInp = (event: any) => {
     setUsrInp(event.target.value);
@@ -30,23 +30,25 @@ function Home() {
     usrInp.length < 10 && usrInp.length > 10 && account.address == undefined;
 
   const handleAccreditate = () => {
-    if (isDissabled) {
-      alert("make sure your wallet is connected and a valid ID is inputed");
-    }
 
-    if (id_address[usrInp] !== undefined) {
-      alert(`${usrInp} is already connected to another wallet`);
-    } else {
-      setId_Address((prevState) => ({
-        ...prevState,
-        usrInp: `${account.address}`,
-      }));
-      navigate("/explore");
-      console.log(id_address[usrInp]);
-    }
+    navigate("/explore");
+    // if (isDissabled) {
+    //   alert("make sure your wallet is connected and a valid ID is inputed");
+    // }
+
+    // if (id_address[usrInp] !== undefined) {
+    //   alert(`${usrInp} is already connected to another wallet`);
+    // } else {
+    //   setId_Address((prevState) => ({
+    //     ...prevState,
+    //     usrInp: `${account.address}`,
+    //   }));
+      
+    //   console.log(id_address[usrInp]);
+    // }
   }
 
-  
+
 
 
   return (
@@ -73,7 +75,7 @@ function Home() {
               type="text"
               name="pvcnumber"
               placeholder="Enter your testID"
-              className="p-2 mt-2 mb-2 mr-2 border rounded-xl border-blue-500 outline-none text-center"
+              className="p-2 mt-2 mb-2 md:mr-2 border rounded-xl border-blue-500 outline-none text-center"
               onChange={handleUsrInp}
               value={usrInp}
             />
@@ -94,12 +96,12 @@ function Home() {
           <img
             src={baselogo}
             alt="baselogo"
-            className="w-20 absolute top-20 left-0"
+            className="w-20 absolute md:top-20 top-10 left-0"
           />
           <img
             src={baselogo}
             alt="baselogo"
-            className="w-20 absolute top-20 right-5 "
+            className="w-20 absolute md:top-20 top-10 right-5 "
           />
           <img
             src={baselogo}
@@ -128,11 +130,12 @@ function Home() {
         {/* Event List (limited to 3) */}
         <h3 className="font-bold text-xl">Presidential Election</h3>
         <div className='flex justify-evenly flex-wrap mt-5 md:gap-5'>
-          <VoteCandi name={presidential[0].name} img={presidential[0].img} party={presidential[0].party} votes={presidential[0].vote}/>
-          <VoteCandi name={presidential[1].name} img = {presidential[1].img} party={presidential[1].party} votes={presidential[1].vote}/>
-          <VoteCandi name={presidential[2].name} img={presidential[2].img} party={presidential[2].party} votes={presidential[2].vote}/>
-          <VoteCandi name={presidential[3].name} img={presidential[3].img} party={presidential[3].party} votes={presidential[3].vote}/>
-        </div> 
+          {
+            presidential.map(candidate => (
+              <VoteCandi name={candidate.name} img={candidate.img} party={candidate.party} votes={candidate.vote} />
+            ))
+          }
+        </div>
       </div>
 
       <Footer />

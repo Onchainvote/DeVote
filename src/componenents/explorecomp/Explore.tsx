@@ -14,6 +14,7 @@ function Explore() {
 
   const navigate = useNavigate()
   const account = useAccount()
+  
   useEffect(() => {
     if (account.address == null) {
       alert("Connect your wallet to vote")
@@ -24,7 +25,7 @@ function Explore() {
 
   return (
     <>
-      <div className='mt-28'>
+      <div className='flex justify-center items-center flex-col mt-28'>
 
         <div>
           <h1>Presidential Election</h1>
@@ -48,7 +49,7 @@ function Explore() {
 
           </div>
         </div>
-        <div className='grid mt-20'>
+        <div className='mt-20 flex justify-center items-center flex-col'>
           <h1>
             Governnorship Election
           </h1>
@@ -72,7 +73,7 @@ function Explore() {
           </div>
         </div>
 
-        <div className=' mt-20'>
+        <div className='flex justify-center items-center flex-col mt-20'>
           <h1>
             House of Reps Election
           </h1>

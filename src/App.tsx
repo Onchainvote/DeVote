@@ -19,7 +19,7 @@ function App() {
   return (
     <>
       <WagmiProvider config={wagmiConfig}>
-        <BrowserRouter>
+        <BrowserRouter basename="/DeVote">
           <Routes>
             <Route path="/" element={<Navbar />}>
               <Route index element={<Home />} />
