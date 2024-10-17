@@ -1,4 +1,4 @@
-import ReactDOM from "react-dom/client";
+//import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './componenents/homecomp/Home'
 import Explore from './componenents/explorecomp/Explore'
@@ -8,7 +8,7 @@ import Dashboard from "./componenents/dashboardcomp/Dashboard";
 import Navbar from './Layout/Navbar'
 import NoPage from './NoPage'
 import './App.css'
-import { ReactNode } from 'react';
+//import { ReactNode } from 'react';
 import { WagmiProvider } from 'wagmi'
 import wagmiConfig from "./config/wagmiConfig";
 

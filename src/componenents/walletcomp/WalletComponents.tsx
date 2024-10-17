@@ -14,6 +14,7 @@ import {
   Identity,
   EthBalance,
 } from '@coinbase/onchainkit/identity';
+//@ts-ignore
 import { color } from '@coinbase/onchainkit/theme';
 
 function WalletComponents() {

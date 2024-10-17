@@ -9,14 +9,14 @@ import { JSXElementConstructor, ReactElement, ReactNode, ReactPortal, useEffect,
 export default function Results() {
 
   const [elem, setElem] = useState(null);
-  const [result, setResult] = useState(null)
+  // const [result, setResult] = useState(null)
 
   const [elem1, setElem1] = useState(null);
-  const [result1, setResult1] = useState(null)
+  // const [result1, setResult1] = useState(null)
 
 
   const [elem2, setElem2] = useState(null);
-  const [result2, setResult2] = useState(null)
+  // const [result2, setResult2] = useState(null)
 
 
   const web3 = new Web3("https://sepolia.base.org");
@@ -26,6 +26,7 @@ export default function Results() {
     try {
       await contract.methods.showAddressVoteFunc().call().then(
         (res) => {
+          //@ts-ignore
           const returnElem = res.map(
             (data: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined) => (
               <div>{data} voted</div>
@@ -47,6 +48,7 @@ export default function Results() {
     try {
       await contract.methods.showAddressVoteFunc().call().then(
         (res) => {
+          //@ts-ignore
           const returnElem = res.map(
             (data: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined) => (
               <div>{data} voted</div>
@@ -68,6 +70,7 @@ export default function Results() {
     try {
       await contract.methods.showAddressVoteFunc().call().then(
         (res) => {
+          //@ts-ignore
           const returnElem = res.map(
             (data: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined) => (
               <div>{data} voted</div>

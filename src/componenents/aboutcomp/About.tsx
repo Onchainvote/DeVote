@@ -1,4 +1,4 @@
-import React from 'react'
+//import React from 'react'
 import miracle from '../../assets/team/miracle.png'
 import dxfareed from '../../assets/team/dxfareed.jpeg'
 import judy from '../../assets/team/judy.jpg'

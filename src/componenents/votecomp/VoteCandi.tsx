@@ -1,6 +1,6 @@
 
 
-
+//@ts-ignore
 function VoteCandi({ name, img, party, votes }: { name: string, img: string ,party: string, votes:number }) {
 
    

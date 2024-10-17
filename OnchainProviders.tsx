@@ -19,12 +19,12 @@ function OnchainProviders({ children }: Props) {
         <OnchainKitProvider
           apiKey={apiKey}
           chain={base}
-          config={{
+          /*config={{
             appearance: {
               mode: 'dark', // 'auto' | 'light' | 'dark'
               theme: 'cyberpunk', // 'default' | 'base' | 'cyberpunk' | 'hacker'
             },
-          }}
+          }}*/
         >
           {children}
         </OnchainKitProvider>

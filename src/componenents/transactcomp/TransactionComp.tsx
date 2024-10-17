@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import {
     Transaction,
     TransactionButton,
@@ -29,6 +29,7 @@ function TransactionComp() {
     return address ? (
         <Transaction
             chainId={84532}
+            //@ts-ignore
             contracts={contracts}
             onStatus={handleOnStatus}
             onSuccess={handleVote}

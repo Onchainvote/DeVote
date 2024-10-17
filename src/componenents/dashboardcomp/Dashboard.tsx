@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react'
+import { ChangeEvent } from 'react'
 import { useAccount } from 'wagmi'
 import EventTransact from '../transactcomp/EventTransact';
 import { Avatar } from '@coinbase/onchainkit/identity';
@@ -7,7 +7,7 @@ import { useAppContext } from '../../../AppProvider';
 
 function Dashboard() {
 
-    const {formData, setFormData, showModal, setShowModal, handleSubmit, submittedData} = useAppContext();
+    const {formData, setFormData, showModal, setShowModal, submittedData} = useAppContext();
 
     // Handle input changes with proper typing
     const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

@@ -3,8 +3,8 @@ import VoteComp from '../votecomp/VoteComp'
 import { useNavigate } from "react-router-dom";
 import { useAccount, useWriteContract } from 'wagmi'
 import { presidential, governoship, houseReps } from '../../data';
-import { useAppContext } from '../../../AppProvider';
-import TransactionComp from '../transactcomp/TransactionComp';
+// import { useAppContext } from '../../../AppProvider';
+// import TransactionComp from '../transactcomp/TransactionComp';
 import abi from '../../abi/abi.json'
 import ca from '../../abi/ca'
 
@@ -37,6 +37,7 @@ function Explore() {
                   {/* <TransactionComp /> */}
                   <button onClick={()=> writeContract({
                     abi,
+                    //@ts-ignore
                     address: ca[0],
                     functionName: 'addVote',
                     args: [candidate.id]
@@ -59,6 +60,7 @@ function Explore() {
                   <VoteComp key={candidate.id} name={candidate.name} img={candidate.img} party={candidate.party} />
                   <button onClick={()=> writeContract({
                     abi,
+                    //@ts-ignore
                     address: ca[1],
                     functionName: 'addVote',
                     args: [candidate.id]
@@ -82,6 +84,7 @@ function Explore() {
                   <VoteComp key={candidate.id} name={candidate.name} img={candidate.img} party={candidate.party} />
                   <button onClick={()=> writeContract({
                     abi,
+                    //@ts-ignore
                     address: ca[4],
                     functionName: 'addVote',
                     args: [candidate.id]

@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import {
     Transaction,
     TransactionButton,
@@ -26,6 +26,7 @@ function EventTransact() {
     return address ? (
         <Transaction
             chainId={84532}
+            //@ts-ignore
             contracts={contracts}
             onStatus={handleOnStatus}
             onSuccess={handleSubmit}
