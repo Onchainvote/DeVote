@@ -57,18 +57,16 @@ function Navbar() {
               </button>
             </div>
 
-            <div className="hidden sm:flex sm:gap-5 sm:items-center">
-              <Link to="/"><RiPassValidLine /> Accreditation</Link>
-              <Link to="/explore"><MdTravelExplore /> Explore</Link>
-              <Link to="/results"><BsClipboardData /> Live data</Link>
+            <div className="hidden sm:flex sm:gap-10 sm:items-center text-xl">
+              <Link className="flex items-center" to="/"><RiPassValidLine />&nbsp; Accreditation</Link>
+              <Link className="flex items-center" to="/explore"><MdTravelExplore />&nbsp; Explore</Link>
+              <Link className="flex items-center" to="/results"><BsClipboardData />&nbsp; Live data</Link>
               {
                 address != null ? (
-                  <li>
-                    <Link to="/dashboard"><CgProfile /> Dashboard</Link>
-                  </li>
+                    <Link className="flex items-center" to="/dashboard"><CgProfile />&nbsp; Dashboard</Link>
                 ) : null
               }
-              <Link to="/about"><RiTeamLine /> About</Link>
+              <Link className="flex items-center" to="/about"><RiTeamLine />&nbsp; About</Link>
             </div>
             <div className="flex-shrink-0 flex items-center">
               <WalletComponents />
@@ -84,9 +82,7 @@ function Navbar() {
               <Link to="/results"><BsClipboardData /> Live data</Link>
               {
                 address != null ? (
-                  <li>
                     <Link to="/dashboard"><CgProfile /> Dashboard</Link>
-                  </li>
                 ) : null
               }
               <Link to="/about"><RiTeamLine /> About</Link>

@@ -7,7 +7,7 @@ import { useAppContext } from '../../../AppProvider';
 
 function Dashboard() {
 
-    const {formData, setFormData, showModal, setShowModal, submittedData} = useAppContext();
+    const { formData, setFormData, showModal, setShowModal, submittedData } = useAppContext();
 
     // Handle input changes with proper typing
     const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -17,7 +17,7 @@ function Dashboard() {
             [name]: value,
         });
     };
-    
+
 
     const account = useAccount()
 
@@ -60,7 +60,7 @@ function Dashboard() {
                                 </div>
                                 <p className='mt-4 text-lg font-bold'>Heroes Section</p>
                                 <div>
-                                    <label>Cadidate 1</label>
+                                    <label>Cadidate 1: </label>
                                     <input
                                         type="text"
                                         name="name1"
@@ -71,7 +71,7 @@ function Dashboard() {
                                     />
                                 </div>
                                 <div>
-                                    <label>Cadidate</label>
+                                    <label>Cadidate 2: </label>
                                     <input
                                         type="text"
                                         name="name2"
@@ -82,7 +82,7 @@ function Dashboard() {
                                     />
                                 </div>
                                 <div>
-                                    <label>Cadidate 3</label>
+                                    <label>Cadidate 3: </label>
                                     <input
                                         type="text"
                                         name="name3"
@@ -94,7 +94,7 @@ function Dashboard() {
                                     />
                                 </div>
                                 <div>
-                                    <label>Cadidate 4</label>
+                                    <label>Cadidate 4: </label>
                                     <input
                                         type="text"
                                         name="name4"
@@ -124,11 +124,25 @@ function Dashboard() {
                 {submittedData && (
                     <div className='flex justify-center items-center flex-col shadow-2xl rounded-md p-4 mt-20'>
                         <h3>Event Information</h3>
-                        <p className='text-xl'>Event: {submittedData.name}</p>
-                        <p>Candidate 1: {submittedData.name1}</p>
-                        <p>Candidate 2: {submittedData.name2}</p>
-                        <p>Candidate 3: {submittedData.name3}</p>
-                        <p>Candidate 4: {submittedData.name4}</p>
+                        <p className='text-3xl font-bold'>{submittedData.name}</p>
+                        <div className='flex justify-center items-center flex-wrap'>
+                            <div className='p-5'>
+                                <p className='text-xl font-bold'>{submittedData.name1}</p>
+                                <button>Vote</button>
+                            </div>
+                            <div className='p-5'>
+                                <p className='text-xl font-bold'>{submittedData.name2}</p>
+                                <button>Vote</button>
+                            </div>
+                            <div className='p-5'>
+                                <p className='text-xl font-bold'>{submittedData.name3}</p>
+                                <button>Vote</button>
+                            </div>
+                            <div className='p-5'>
+                                <p className='text-xl font-bold'>{submittedData.name4}</p>
+                                <button>Vote</button>
+                            </div>
+                        </div>
                     </div>
                 )}
 

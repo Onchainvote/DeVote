@@ -81,7 +81,7 @@ function Explore() {
 
             {
               houseReps.map(candidate => (
-                <div>
+                <div className='mb-5'>
                   <VoteComp key={candidate.id} name={candidate.name} img={candidate.img} party={candidate.party} />
                   <button onClick={()=> writeContract({
                     abi,
