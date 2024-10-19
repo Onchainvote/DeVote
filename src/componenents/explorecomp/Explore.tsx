@@ -14,10 +14,12 @@ function Explore() {
 
   const navigate = useNavigate()
   const account = useAccount()
-  
+  const userAddress: any = account.address
+
+
   useEffect(() => {
-    if (account.address == null) {
-      alert("Connect your wallet to vote")
+
+    if(userAddress == null){
       navigate("/")
     }
   }, [])
@@ -36,7 +38,7 @@ function Explore() {
                 <div>
                   <VoteComp key={candidate.id} name={candidate.name} img={candidate.img} party={candidate.party} />
                   {/* <TransactionComp /> */}
-                  <button onClick={()=> writeContract({
+                  <button onClick={() => writeContract({
                     abi,
                     //@ts-ignore
                     address: ca[0],
@@ -59,7 +61,7 @@ function Explore() {
               governoship.map(candidate => (
                 <div>
                   <VoteComp key={candidate.id} name={candidate.name} img={candidate.img} party={candidate.party} />
-                  <button onClick={()=> writeContract({
+                  <button onClick={() => writeContract({
                     abi,
                     //@ts-ignore
                     address: ca[1],
@@ -83,7 +85,7 @@ function Explore() {
               houseReps.map(candidate => (
                 <div className='mb-5'>
                   <VoteComp key={candidate.id} name={candidate.name} img={candidate.img} party={candidate.party} />
-                  <button onClick={()=> writeContract({
+                  <button onClick={() => writeContract({
                     abi,
                     //@ts-ignore
                     address: ca[4],

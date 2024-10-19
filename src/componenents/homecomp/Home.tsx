@@ -5,7 +5,7 @@ import baselogo from "../../assets/baselogo.png";
 import RetroGrid from "../ui/retro-grid";
 import Footer from "../../Layout/Footer";
 import WelcomeModal from "./WelcomeModal";
-import { Name } from '@coinbase/onchainkit/identity'
+import { getName, Name } from '@coinbase/onchainkit/identity';
 import { base } from 'viem/chains';
 import { presidential } from "../../data";
 import VoteCandi from "../votecomp/VoteCandi";
@@ -18,16 +18,28 @@ function Home() {
   // let id_address = new Map<string, string>();
 
   const account = useAccount();
-  //const userAddress = account.address
+  const userAddress: any = account.address
+  const [basedname, setBasedName] = useState<any>("")
 
-  const userAddress = '0x02feeb0AdE57b6adEEdE5A4EEea6Cf8c21BeB6B1'
+  const getBaseName = async () => {
+   try{
+    const name = await getName({ address: userAddress, chain: base })
+    setBasedName(name)
+   }catch (error){
+    alert("wallet not connected")
+   }
+    if (basedname == null) {
+      alert('No base name associated to this address')
+    } else {
+      navigate("/explore")
+    }
+  }
+
 
   const navigate = useNavigate();
+
   const [usrInp, setUsrInp] = useState<string>("");
   // const [tempid, setTempid] = useState("")
-
-  const tempid = <Name address={userAddress} chain={base} />
-  console.log(tempid.props);
 
   // const [id_address, setId_Address] = useState<MyObject>({
   //   "1234567890": "0x23456789",
@@ -37,26 +49,26 @@ function Home() {
     setUsrInp(event.target.value);
   };
 
-  const isDissabled = usrInp != tempid.props
+  // const isDissabled = usrInp != tempid
 
-  const handleAccreditate = () => {
+  // const handleAccreditate = () => {
 
-    navigate("/explore");
-    // if (isDissabled) {
-    //   alert("make sure your wallet is connected and a valid ID is inputed");
-    // }
+  //   navigate("/explore");
+  //   // if (isDissabled) {
+  //   //   alert("make sure your wallet is connected and a valid ID is inputed");
+  //   // }
 
-    // if (id_address[usrInp] !== undefined) {
-    //   alert(`${usrInp} is already connected to another wallet`);
-    // } else {
-    //   setId_Address((prevState) => ({
-    //     ...prevState,
-    //     usrInp: `${account.address}`,
-    //   }));
+  //   // if (id_address[usrInp] !== undefined) {
+  //   //   alert(`${usrInp} is already connected to another wallet`);
+  //   // } else {
+  //   //   setId_Address((prevState) => ({
+  //   //     ...prevState,
+  //   //     usrInp: `${account.address}`,
+  //   //   }));
 
-    //   console.log(id_address[usrInp]);
-    // }
-  }
+  //   //   console.log(id_address[usrInp]);
+  //   // }
+  // }
 
 
 
@@ -91,14 +103,22 @@ function Home() {
               onChange={handleUsrInp}
               value={usrInp}
             />
+            {
+              userAddress != null ? (
+                <Name className="bg-blue-600 px-2 py-1 rounded" address
+              ={userAddress} chain
+              ={base
+              } />
+              ):null
+            }
             <p className="text-sm">
-              ID {tempid} is mapped to your address: {userAddress}
+              ID will be mapped to your address: {userAddress}
             </p>
           </div>
           <button
             className="m-6 cursor-pointer b-1 border rounded-xl border-blue-500 outline-none"
-            onClick={handleAccreditate}
-            disabled={isDissabled}
+            onClick={getBaseName}
+          // disabled={isDissabled}
           >
             Accreditate
           </button>
