@@ -4,7 +4,9 @@ import { useAccount } from "wagmi";
 import baselogo from "../../assets/baselogo.png";
 import RetroGrid from "../ui/retro-grid";
 import Footer from "../../Layout/Footer";
-
+import WelcomeModal from "./WelcomeModal";
+import { Name } from '@coinbase/onchainkit/identity'
+import { base } from 'viem/chains';
 import { presidential } from "../../data";
 import VoteCandi from "../votecomp/VoteCandi";
 
@@ -16,8 +18,17 @@ function Home() {
   // let id_address = new Map<string, string>();
 
   const account = useAccount();
+  //const userAddress = account.address
+
+  const userAddress = '0x02feeb0AdE57b6adEEdE5A4EEea6Cf8c21BeB6B1'
+
   const navigate = useNavigate();
   const [usrInp, setUsrInp] = useState<string>("");
+  // const [tempid, setTempid] = useState("")
+
+  const tempid = <Name address={userAddress} chain={base} />
+  console.log(tempid.props);
+
   // const [id_address, setId_Address] = useState<MyObject>({
   //   "1234567890": "0x23456789",
   // });
@@ -26,8 +37,7 @@ function Home() {
     setUsrInp(event.target.value);
   };
 
-  const isDissabled =
-    usrInp.length < 10 && usrInp.length > 10 && account.address == undefined;
+  const isDissabled = usrInp != tempid.props
 
   const handleAccreditate = () => {
 
@@ -43,7 +53,7 @@ function Home() {
     //     ...prevState,
     //     usrInp: `${account.address}`,
     //   }));
-      
+
     //   console.log(id_address[usrInp]);
     // }
   }
@@ -53,6 +63,7 @@ function Home() {
 
   return (
     <div className="">
+      <WelcomeModal />
       {/* hero section */}
       <div className="relative flex flex-col items-center justify-center w-full min-h-screen px-3 overflow-hidden bg-background mt-20">
         <div className="text-center">
@@ -66,6 +77,7 @@ function Home() {
           <p className="mt-4 text-lg text-slate-700 md:text-xl">
             A voting system built on BASE to promote a more secure and
             transparent way of voting.
+            <p>Experience Traditional Governance Onchain</p>
           </p>
         </div>
 
@@ -80,7 +92,7 @@ function Home() {
               value={usrInp}
             />
             <p className="text-sm">
-              ID will be mapped to your address: {account.address}
+              ID {tempid} is mapped to your address: {userAddress}
             </p>
           </div>
           <button
