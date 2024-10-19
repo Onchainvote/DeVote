@@ -19,22 +19,21 @@ function Home() {
 
   const account = useAccount();
   const userAddress: any = account.address
-  const [basedname, setBasedName] = useState<any>("")
+  const [basedname, setBasedName] = useState<any>(null)
 
   const getBaseName = async () => {
-   try{
-    const name = await getName({ address: userAddress, chain: base })
-    setBasedName(name)
-   }catch (error){
-    alert("wallet not connected")
-   }
-    if (basedname == null) {
-      alert('No base name associated to this address')
-    } else {
-      navigate("/explore")
+    try {
+      console.log('fetching')
+      const name = await getName({ address: userAddress, chain: base })
+      setBasedName(name);
+      console.log(basedname)
+
+    } catch (error) {
+      console.error(error)
     }
   }
 
+  getBaseName();
 
   const navigate = useNavigate();
 
@@ -51,24 +50,31 @@ function Home() {
 
   // const isDissabled = usrInp != tempid
 
-  // const handleAccreditate = () => {
+  const handleAccreditate = () => {
 
-  //   navigate("/explore");
-  //   // if (isDissabled) {
-  //   //   alert("make sure your wallet is connected and a valid ID is inputed");
-  //   // }
+    if (basedname === null) {
+      alert('No base name associated to this address')
+    }
+    else {
+      navigate("/explore")
+      console.log(basedname)
+    }
 
-  //   // if (id_address[usrInp] !== undefined) {
-  //   //   alert(`${usrInp} is already connected to another wallet`);
-  //   // } else {
-  //   //   setId_Address((prevState) => ({
-  //   //     ...prevState,
-  //   //     usrInp: `${account.address}`,
-  //   //   }));
+    // if (isDissabled) {
+    //   alert("make sure your wallet is connected and a valid ID is inputed");
+    // }
 
-  //   //   console.log(id_address[usrInp]);
-  //   // }
-  // }
+    // if (id_address[usrInp] !== undefined) {
+    //   alert(`${usrInp} is already connected to another wallet`);
+    // } else {
+    //   setId_Address((prevState) => ({
+    //     ...prevState,
+    //     usrInp: `${account.address}`,
+    //   }));
+
+    //   console.log(id_address[usrInp]);
+    // }
+  }
 
 
 
@@ -106,10 +112,10 @@ function Home() {
             {
               userAddress != null ? (
                 <Name className="bg-blue-600 px-2 py-1 rounded" address
-              ={userAddress} chain
-              ={base
-              } />
-              ):null
+                  ={userAddress} chain
+                  ={base
+                  } />
+              ) : null
             }
             <p className="text-sm">
               ID will be mapped to your address: {userAddress}
@@ -117,7 +123,7 @@ function Home() {
           </div>
           <button
             className="m-6 cursor-pointer b-1 border rounded-xl border-blue-500 outline-none"
-            onClick={getBaseName}
+            onClick={handleAccreditate}
           // disabled={isDissabled}
           >
             Accreditate
@@ -128,22 +134,22 @@ function Home() {
           <img
             src={baselogo}
             alt="baselogo"
-            className="w-20 absolute md:top-20 top-10 left-0"
+            className="w-20 absolute md:top-20 top-0 left-0"
           />
           <img
             src={baselogo}
             alt="baselogo"
-            className="w-20 absolute md:top-20 top-10 right-5 "
+            className="w-20 absolute md:top-20 top-0 right-0 "
           />
           <img
             src={baselogo}
             alt="baselogo"
-            className="w-20 absolute bottom-12 right-5 "
+            className="w-20 absolute bottom-5 right-0 "
           />
           <img
             src={baselogo}
             alt="baselogo"
-            className="w-20 absolute bottom-12 left-0 "
+            className="w-20 absolute bottom-5 left-0 "
           />
         </div>
 
