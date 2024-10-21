@@ -11,7 +11,7 @@
 ### Usage
 1. Clone the repo:
   ```bash
-  git clone https://github.com/Onchainvote/Onchainvote.git
+  git clone https://github.com/Onchainvote/DeVote.git
   ```
 2. Install Dependencies:
   ```bash
@@ -25,3 +25,7 @@
 
 #### Resource
 Onchainkit: [Onchainkit](https://onchainkit.xyz)
+
+
+##### Contract
+CA:https://sepolia.basescan.org/address/0x5Dbf3420E6D1105ECe0ba9893e51824AEa3446cA
